@@ -5,6 +5,7 @@
         Line,
         Scatter,
         Candle,
-        Bar
+        Bar,
+        Pie
     }
 }
