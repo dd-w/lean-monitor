@@ -1,6 +1,8 @@
+using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Monitor.Model.Sessions;
@@ -20,6 +22,8 @@ namespace Monitor.ViewModel.NewSession
         {
             _sessionService = sessionService;
             OpenCommand = new RelayCommand(Open, CanOpen);
+            BrowseCommand = new RelayCommand(Browse);
+
         }
 
         private void Open()
@@ -59,6 +63,8 @@ namespace Monitor.ViewModel.NewSession
         }
 
         public RelayCommand OpenCommand { get; }
+        public RelayCommand BrowseCommand { get; }
+
         public string Header { get; } = "From file";
 
         public string this[string columnName]
@@ -79,5 +85,23 @@ namespace Monitor.ViewModel.NewSession
         }
 
         public string Error { get; } = null;
+
+        public void Browse()
+        {
+            // Create OpenFileDialog 
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+            {
+                DefaultExt = ".json",
+                Filter = "JSON Files (*.json)|*.json" // Set filter for file extension and default file extension 
+            };
+            // Display OpenFileDialog by calling ShowDialog method 
+            var result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                FileName = dlg.FileName;
+            }
+        }
     }
 }
