@@ -141,7 +141,10 @@ namespace Monitor.Model
 
                 case QuantConnect.SeriesType.Bar:
                     return SeriesType.Bar;
-                    
+
+                case QuantConnect.SeriesType.Pie:
+                    return SeriesType.Pie;
+
                 default:
                     throw new NotSupportedException($"SeriesType {seriesType} is not supported.");
             }
@@ -162,6 +165,9 @@ namespace Monitor.Model
 
                 case SeriesType.Bar:
                     return QuantConnect.SeriesType.Bar;
+
+                case SeriesType.Pie:
+                    return QuantConnect.SeriesType.Pie;
 
                 default:
                     throw new NotSupportedException($"SeriesType {seriesType} is not supported.");
