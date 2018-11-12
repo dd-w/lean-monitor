@@ -29,6 +29,7 @@
         <TextBox Margin="0,0,0,4" Grid.Row="0" Grid.Column="1" Text="{Binding FileName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
         <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding FileWatch}" Content="Monitor for changes"></CheckBox>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="Browse" Margin="16.476,40.503,118.078,-40.503" Content="Browse" Command="{Binding BrowseCommand}"/>
 
     </Grid>
 </UserControl>
